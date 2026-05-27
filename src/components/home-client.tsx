@@ -15,9 +15,10 @@ import { buildCategories, buildStats, type Firearm } from '@/lib/data';
 
 interface HomeClientProps {
   firearms: Firearm[];
+  loadError?: string;
 }
 
-export default function HomeClient({ firearms }: HomeClientProps) {
+export default function HomeClient({ firearms, loadError }: HomeClientProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [selectedWeapon, setSelectedWeapon] = useState<Firearm | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -50,21 +51,42 @@ export default function HomeClient({ firearms }: HomeClientProps) {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <CategoriesSection categories={categories} />
-        <StatsSection stats={stats} />
-        <FeaturedWeaponsUpgraded firearms={firearms} onWeaponSelect={handleWeaponSelect} />
-        <SearchFilter firearms={firearms} categories={categories} />
-        <ComparisonSection firearms={firearms} />
+        {loadError ? (
+          <section className="px-4 sm:px-6 lg:px-8 py-20">
+            <div className="max-w-3xl mx-auto rounded-2xl border border-border/60 bg-card/70 backdrop-blur-xl p-8">
+              <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">Database unavailable</p>
+              <h2 className="font-display font-bold text-3xl mb-4 text-foreground">
+                PostgreSQL is not reachable from this deployment.
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                {loadError}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                The local dataset is still the source of truth. Run the app on your own machine with your local PostgreSQL instance connected through `DATABASE_URL`.
+              </p>
+            </div>
+          </section>
+        ) : (
+          <>
+            <CategoriesSection categories={categories} />
+            <StatsSection stats={stats} />
+            <FeaturedWeaponsUpgraded firearms={firearms} onWeaponSelect={handleWeaponSelect} />
+            <SearchFilter firearms={firearms} categories={categories} />
+            <ComparisonSection firearms={firearms} />
+          </>
+        )}
         <Footer />
       </div>
 
-      <WeaponModal
-        weapon={selectedWeapon}
-        firearms={firearms}
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        clickPosition={clickPosition}
-      />
+      {!loadError && (
+        <WeaponModal
+          weapon={selectedWeapon}
+          firearms={firearms}
+          isOpen={modalOpen}
+          onClose={handleCloseModal}
+          clickPosition={clickPosition}
+        />
+      )}
     </main>
   );
 }

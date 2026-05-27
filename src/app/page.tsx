@@ -4,7 +4,17 @@ import { getFirearmsCollection } from '@/lib/firearms-service';
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const firearms = await getFirearmsCollection();
+  let firearms = [];
+  let loadError: string | undefined;
 
-  return <HomeClient firearms={firearms} />;
+  try {
+    firearms = await getFirearmsCollection();
+  } catch (error) {
+    loadError =
+      error instanceof Error
+        ? error.message
+        : 'The firearm dataset could not be loaded from PostgreSQL.';
+  }
+
+  return <HomeClient firearms={firearms} loadError={loadError} />;
 }
