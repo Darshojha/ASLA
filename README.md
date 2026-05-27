@@ -1,5 +1,4 @@
 # ASLA
-
 A one-page firearms reference site built with Next.js and PostgreSQL.
 
 ## Data
@@ -18,3 +17,5 @@ A one-page firearms reference site built with Next.js and PostgreSQL.
 ## Schema
 
 - `db/schema.sql` mirrors the table definition used by the app bootstrap logic.
+
+ASLA is a modern firearm encyclopedia and exploration platform featuring detailed weapon data, search, immersive visuals, and interactive exploration. It is designed as a one-page information site centered on factual collection data.
