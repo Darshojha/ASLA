@@ -1,6 +1,6 @@
 # ASLA
 
-A one-page information site about firearms with a PostgreSQL-backed collection.
+A one-page firearms reference site with a PostgreSQL-backed collection and a monochrome smoke visual system.
 
 ## What this repo uses
 
@@ -8,6 +8,8 @@ A one-page information site about firearms with a PostgreSQL-backed collection.
 - PostgreSQL for local development and hosted deployment
 - SQL migrations in `db/migrations`
 - A VS Code recommendation for the PostgreSQL extension
+- A fixed black background with lightweight smoke overlays behind the content
+- A single-page layout with one continuous scroll surface
 
 ## Local PostgreSQL setup
 
@@ -38,6 +40,13 @@ Use the same local database values from `.env.local` to create the connection in
 - Password: your PostgreSQL password
 
 Do not store secrets in the repository.
+
+The UI is intentionally monochrome:
+
+- Black background
+- White, silver, and gray text hierarchy
+- Smoke overlays used as atmosphere only, never as a full-screen blocker
+- Minimal title bar and restrained separators
 
 ## Migrations
 
@@ -93,6 +102,8 @@ The app reads these connection sources, in order:
 4. `PGHOST` / `PGDATABASE` / `PGUSER` / `PGPASSWORD` / `PGPORT`
 
 For the live site, prefer a hosted PostgreSQL service such as Vercel Postgres or another provider that supports external connections from Vercel.
+
+The production build should always keep the content visible. If a visual overlay hides the interface, reduce the overlay opacity or move it behind the content layer.
 
 ## Scripts
 
