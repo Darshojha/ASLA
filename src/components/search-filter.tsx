@@ -247,6 +247,8 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
                         alt={firearm.name}
                         fill
                         unoptimized
+                        loading="lazy"
+                        fetchPriority="low"
                         sizes="(max-width: 1024px) 100vw, 33vw"
                         className="object-contain p-3"
                       />

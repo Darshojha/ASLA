@@ -11,8 +11,13 @@ import ComparisonSection from '@/components/comparison-section';
 import StatsSection from '@/components/stats-section';
 import Footer from '@/components/footer';
 import ParticleBackground from '@/components/particle-background';
-import WeaponModal from '@/components/weapon-modal';
 import { buildCategories, buildStats, type Firearm } from '@/lib/data';
+import dynamic from 'next/dynamic';
+
+const WeaponModal = dynamic(() => import('@/components/weapon-modal'), {
+  ssr: false,
+  loading: () => null,
+});
 
 interface HomeClientProps {
   firearms: Firearm[];

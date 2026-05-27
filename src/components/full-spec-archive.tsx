@@ -75,6 +75,11 @@ export default function FullSpecArchive({ firearms, onWeaponSelect }: FullSpecAr
     [visibleGroups]
   );
 
+  const jumpTargets = visibleGroups.map((group) => ({
+    id: `archive-${group.id}`,
+    label: group.name,
+  }));
+
   return (
     <section id="archive" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background via-background/80 to-background">
       <div className="max-w-7xl mx-auto">
@@ -175,6 +180,21 @@ export default function FullSpecArchive({ firearms, onWeaponSelect }: FullSpecAr
                 Expand visible groups
               </button>
             </div>
+
+            <div className="flex gap-2 overflow-x-auto pb-1 pt-1">
+              <span className="shrink-0 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-border/60 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                Jump to category
+              </span>
+              {jumpTargets.map((target) => (
+                <a
+                  key={target.id}
+                  href={`#${target.id}`}
+                  className="shrink-0 px-3 py-1.5 rounded-full text-xs font-medium border border-border/60 bg-background/60 text-muted-foreground hover:text-foreground hover:border-primary/30 transition-colors"
+                >
+                  {target.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -185,7 +205,7 @@ export default function FullSpecArchive({ firearms, onWeaponSelect }: FullSpecAr
           className="space-y-8"
         >
           {visibleGroups.map((group) => (
-            <Accordion.Item key={group.id} value={group.id} className="border-0">
+            <Accordion.Item key={group.id} value={group.id} className="border-0 scroll-mt-40" id={`archive-${group.id}`}>
               <Accordion.Header className="sticky top-[11.5rem] z-20">
                 <Accordion.Trigger className="w-full rounded-2xl border border-border/60 bg-card/70 backdrop-blur-xl px-5 sm:px-6 py-4 text-left shadow-lg shadow-black/5 data-[state=open]:border-primary/30 data-[state=open]:bg-card/90 transition-colors">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -257,6 +277,8 @@ function ArchiveCard({
               alt={weapon.name}
               fill
               unoptimized
+              loading="lazy"
+              fetchPriority="low"
               sizes="(max-width: 1280px) 100vw, 240px"
               className="object-contain p-5 drop-shadow-[0_20px_34px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-[1.03]"
             />
