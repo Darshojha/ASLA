@@ -7,7 +7,9 @@ Build and maintain a one-page informational website focused on firearms, organiz
 ## Product Goals
 
 - Keep the experience single-page and fast to browse.
-- Present firearms data in a subtle, editorial visual style.
+- Present firearms data in a monochrome, editorial visual style.
+- Use a complete black background with layered smoke as atmospheric treatment only.
+- Keep the title bar minimal, with a single-line chrome and no extra visual clutter.
 - Use PostgreSQL as the source of truth for the collection.
 - Support schema evolution through versioned SQL migrations.
 - Make local development match deployment as closely as possible.
@@ -21,6 +23,9 @@ Build and maintain a one-page informational website focused on firearms, organiz
 
 - One-page layout only.
 - Categories remain grouped and scannable.
+- Content must remain visible at all times; overlays cannot fully block the UI.
+- Smoke and background effects must stay behind the content layer.
+- Firearm cards, archive cards, and modal views should retain full specification detail.
 - Firearm records are stored in PostgreSQL.
 - Schema changes are added through new migration files.
 - Local database configuration must work from VS Code and the app runtime.
@@ -32,6 +37,8 @@ Build and maintain a one-page informational website focused on firearms, organiz
 - PostgreSQL connection support through `DATABASE_URL`, `POSTGRES_URL`, `POSTGRES_URL_NON_POOLING`, or `PG*` variables.
 - SQL migration runner for repeatable schema updates.
 - Environment variable documentation for local development and Vercel deployment.
+- Background effects should be lightweight enough to preserve readability and responsiveness.
+- Images and modal assets should lazy-load where possible to keep the page responsive.
 
 ## Non-Goals
 
@@ -45,4 +52,4 @@ Build and maintain a one-page informational website focused on firearms, organiz
 - New columns, tables, or indexes must be added in a new migration file.
 - Existing migrations should not be rewritten once committed.
 - Local and hosted database settings should remain documented in the repo.
-
+- Visual changes should preserve the monochrome smoke theme unless the direction is explicitly changed later.
