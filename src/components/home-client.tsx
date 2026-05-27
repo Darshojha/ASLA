@@ -72,7 +72,7 @@ export default function HomeClient({ firearms, loadError }: HomeClientProps) {
             <CategoriesSection categories={categories} />
             <StatsSection stats={stats} />
             <FeaturedWeaponsUpgraded firearms={firearms} onWeaponSelect={handleWeaponSelect} />
-            <FullSpecArchive firearms={firearms} />
+            <FullSpecArchive firearms={firearms} onWeaponSelect={handleWeaponSelect} />
             <SearchFilter firearms={firearms} categories={categories} />
             <ComparisonSection firearms={firearms} />
           </>
