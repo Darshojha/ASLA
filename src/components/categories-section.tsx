@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { CategorySummary } from '@/lib/data';
-import { getCategoryHeroImage, getCategoryHeroTitle } from '@/lib/firearm-media';
+import { getCategoryHeroImage, getCategoryHeroTitle, neutralWeaponTone } from '@/lib/firearm-media';
 
 interface CategoriesSectionProps {
   categories: CategorySummary[];
@@ -88,7 +88,7 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
                 )}>
                   <div className={cn(
                     'absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300',
-                    category.color
+                    neutralWeaponTone
                   )} />
 
                   <div className="absolute inset-0 rounded-2xl p-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -102,7 +102,7 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
                           fill
                           unoptimized
                           sizes="(max-width: 1024px) 100vw, 33vw"
-                          className="object-cover"
+                          className="object-cover grayscale contrast-110 brightness-110"
                         />
                       ) : null}
                       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/15 to-transparent" />
@@ -110,8 +110,8 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
                         <div className={cn(
                           'w-11 h-11 rounded-lg flex items-center justify-center',
                           'bg-gradient-to-br shadow-lg',
-                          category.color,
-                          'text-white'
+                          neutralWeaponTone,
+                          'text-zinc-100'
                         )}>
                           <Icon className="w-5 h-5" />
                         </div>

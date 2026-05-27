@@ -20,10 +20,9 @@
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    background-image:
-      radial-gradient(circle at top, color-mix(in oklch, var(--primary) 14%, transparent) 0, transparent 35%),
-      radial-gradient(circle at bottom right, color-mix(in oklch, var(--accent) 10%, transparent) 0, transparent 30%),
-      linear-gradient(180deg, color-mix(in oklch, var(--background) 94%, white) 0%, var(--background) 100%);
+    background-image: none;
+    min-height: 100vh;
+    overflow-x: hidden;
   }
 
   /* Display font for headings */
@@ -41,14 +40,14 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: color-mix(in oklch, var(--foreground) 10%, transparent);
+    background: color-mix(in oklch, var(--foreground) 18%, transparent);
     border-radius: 2px;
   }
 
   /* Firefox scrollbar styling */
   * {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in oklch, var(--foreground) 10%, transparent) transparent;
+    scrollbar-color: color-mix(in oklch, var(--foreground) 18%, transparent) transparent;
   }
 }
 

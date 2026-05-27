@@ -1,135 +1,78 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { useMemo } from 'react';
+import { motion } from 'motion/react';
 
 export default function ParticleBackground() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  
-  // Parallax motion on scroll
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -150]);
-  const opacity1 = useTransform(scrollY, [0, 500], [0.3, 0.1]);
-  const opacity2 = useTransform(scrollY, [0, 500], [0.2, 0.05]);
-
-  // Memoized particle positions to avoid recalculation using deterministic values
-  const particles = useMemo(() => {
-    return Array.from({ length: 30 }, (_, i) => {
-      // Use deterministic values based on index to avoid impure function calls
-      const seed = i * 7.919; // Prime multiplier for distribution
-      const x = (seed * 13.37) % 100;
-      const y = (seed * 42.42) % 100;
-      const size = ((seed * 3.14) % 1.5) + 0.5;
-      const duration = ((seed * 2.71) % 20) + 15;
-      const delay = (seed * 1.61) % 5;
-      
-      return {
-        id: i,
-        x: Math.abs(x),
-        y: Math.abs(y),
-        size,
-        duration,
-        delay,
-      };
-    });
-  }, []);
+  const smoke = useMemo(
+    () =>
+      Array.from({ length: 18 }, (_, i) => {
+        const seed = i * 9.137;
+        return {
+          id: i,
+          left: `${(seed * 7.7) % 100}%`,
+          bottom: `${(seed * 3.3) % 28}%`,
+          width: 180 + ((seed * 11.1) % 240),
+          height: 120 + ((seed * 5.5) % 180),
+          duration: 18 + ((seed * 2.3) % 16),
+          delay: (seed * 0.9) % 8,
+          drift: ((seed * 13.2) % 90) - 45,
+          opacity: 0.2 + ((seed * 2.7) % 0.35),
+          blur: 18 + ((seed * 4.1) % 28),
+        };
+      }),
+    []
+  );
 
   return (
-    <div ref={containerRef} className="fixed inset-0 overflow-hidden pointer-events-none">
-      {/* Main gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0e1a] via-[#0f0612] to-[#1a0a15]" />
-
-      {/* Animated gradient overlays */}
-      <motion.div
-        style={{ y: y1, opacity: opacity1 }}
-        className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-600/20 to-transparent rounded-full blur-3xl"
-        animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{ duration: 25, repeat: Infinity }}
-      />
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-20">
+      <div className="absolute inset-0 bg-black" />
 
       <motion.div
-        style={{ y: y2, opacity: opacity2 }}
-        className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-red-900/15 to-transparent rounded-full blur-3xl"
-        animate={{
-          x: [0, -50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{ duration: 30, repeat: Infinity, delay: 5 }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.03),transparent_45%),radial-gradient(circle_at_bottom,rgba(255,255,255,0.015),transparent_40%)]"
+        animate={{ opacity: [0.85, 1, 0.9] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      {/* Smoke/Spark particles */}
-      {particles.map((particle) => (
+      {smoke.map((plume) => (
         <motion.div
-          key={particle.id}
-          className="absolute bg-gradient-to-b from-purple-500/40 to-transparent rounded-full blur-lg"
+          key={plume.id}
+          className="absolute rounded-full mix-blend-screen"
           style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.size * 20,
-            height: particle.size * 20,
+            left: plume.left,
+            bottom: plume.bottom,
+            width: plume.width,
+            height: plume.height,
+            opacity: plume.opacity,
+            filter: `blur(${plume.blur}px)`,
+            background:
+              'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45) 0%, rgba(235,235,235,0.24) 28%, rgba(50,50,50,0.08) 60%, transparent 100%)',
           }}
           animate={{
-            y: [0, -300, -600],
-            opacity: [0, 0.6, 0],
-            scale: [0.5, 1, 0.3],
+            y: [0, -120, -320, -620],
+            x: [0, plume.drift * 0.35, plume.drift, plume.drift * 1.2],
+            scale: [0.85, 1.05, 1.15, 1.3],
+            opacity: [0, plume.opacity * 0.9, plume.opacity, 0],
           }}
           transition={{
-            duration: particle.duration,
-            delay: particle.delay,
+            duration: plume.duration,
+            delay: plume.delay,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
       ))}
 
-      {/* Bullet trail effects */}
-      {particles.slice(0, 10).map((particle) => {
-        // Deterministic offset based on particle id
-        const offsetX = ((particle.id * 7.3) % 40) - 20;
-        return (
-          <motion.div
-            key={`bullet-${particle.id}`}
-            className="absolute w-1 h-12 bg-gradient-to-b from-cyan-400/60 to-transparent rounded-full blur-sm"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-            }}
-            animate={{
-              y: [0, -400, -800],
-              opacity: [0, 0.8, 0],
-              x: [0, offsetX],
-            }}
-            transition={{
-              duration: particle.duration + 5,
-              delay: particle.delay,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        );
-      })}
-
-      {/* Glitch effect accent lines */}
       <motion.div
-        className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent"
-        animate={{
-          opacity: [0.1, 0.3, 0.1],
-          x: [0, 20, 0],
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
+        className="absolute left-0 right-0 top-[18%] h-24 bg-gradient-to-b from-white/10 via-white/5 to-transparent blur-3xl"
+        animate={{ opacity: [0.15, 0.35, 0.18], y: [0, 10, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
       />
 
       <motion.div
-        className="absolute top-2/3 right-0 w-full h-px bg-gradient-to-l from-transparent via-red-700/15 to-transparent"
-        animate={{
-          opacity: [0.05, 0.2, 0.05],
-          x: [0, -20, 0],
-        }}
-        transition={{ duration: 12, repeat: Infinity, delay: 4 }}
+        className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-white/10 via-white/5 to-transparent blur-3xl"
+        animate={{ opacity: [0.14, 0.28, 0.16], y: [0, -20, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }}
       />
     </div>
   );

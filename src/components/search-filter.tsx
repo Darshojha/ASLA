@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { Search, X, Filter } from 'lucide-react';
 import type { CategorySummary, Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { getFirearmImage } from '@/lib/firearm-media';
+import { getFirearmImage, neutralWeaponTone } from '@/lib/firearm-media';
 
 interface SearchFilterProps {
   firearms: Firearm[];
@@ -240,7 +240,7 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
                   transition={{ duration: 0.18, ease: 'easeOut' }}
                   className="rounded-2xl border border-border/60 bg-card/70 p-5 backdrop-blur-xl will-change-transform"
                 >
-                  <div className={cn('relative h-32 rounded-xl mb-4 overflow-hidden bg-gradient-to-br', firearm.color)}>
+                  <div className={cn('relative h-32 rounded-xl mb-4 overflow-hidden bg-gradient-to-br', neutralWeaponTone)}>
                     {imageUrl ? (
                       <Image
                         src={imageUrl}
@@ -250,7 +250,7 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
                         loading="lazy"
                         fetchPriority="low"
                         sizes="(max-width: 1024px) 100vw, 33vw"
-                        className="object-contain p-3"
+                        className="object-contain p-3 grayscale contrast-110 brightness-110"
                       />
                     ) : null}
                   </div>
@@ -269,10 +269,10 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
                     <SpecMini label="Capacity" value={`${firearm.magazineCapacity} rounds`} />
                   </div>
                   <div className="flex flex-wrap gap-2 text-xs">
-                    <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
+                    <span className="px-2 py-1 rounded-full bg-white/5 text-zinc-100 border border-white/10">
                       {firearm.category}
                     </span>
-                    <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
+                    <span className="px-2 py-1 rounded-full bg-white/5 text-zinc-100 border border-white/10">
                       {firearm.origin}
                     </span>
                   </div>

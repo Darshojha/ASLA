@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { useState, useCallback, useRef } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { WeaponSilhouette } from './weapon-silhouettes';
-import { getFirearmImage } from '@/lib/firearm-media';
+import { getFirearmImage, neutralWeaponTone } from '@/lib/firearm-media';
 
 interface EnhancedWeaponCardProps {
   weapon: Firearm;
@@ -79,7 +79,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
           <motion.div
             className={cn(
               'relative h-48 rounded-xl mb-4 overflow-hidden bg-gradient-to-br',
-              weapon.color,
+              neutralWeaponTone,
               'transition-all duration-200 flex items-center justify-center',
               isHovered && 'shadow-2xl shadow-primary/20'
             )}
@@ -95,7 +95,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
                 fill
                 unoptimized
                 sizes="(max-width: 768px) 100vw, 25vw"
-                className="object-contain p-4 drop-shadow-[0_20px_35px_rgba(0,0,0,0.4)]"
+                className="object-contain p-4 drop-shadow-[0_20px_35px_rgba(0,0,0,0.4)] grayscale contrast-110 brightness-110"
               />
             ) : (
               <motion.div
@@ -104,7 +104,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
                   rotate: isHovered ? 5 : 0,
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                className="w-3/4 h-3/4 text-white/80 relative z-10"
+                className="w-3/4 h-3/4 text-white/80 relative z-10 grayscale"
               >
                 <WeaponSilhouette weapon={weapon} animated={true} />
               </motion.div>
@@ -143,7 +143,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
             {/* Name */}
             <motion.h3
               animate={{ scale: isHovered ? 1.05 : 1 }}
-              className="font-display font-bold text-xl mb-2 text-foreground group-hover:text-purple-300 transition-colors"
+              className="font-display font-bold text-xl mb-2 text-foreground group-hover:text-zinc-200 transition-colors"
             >
               {weapon.name}
             </motion.h3>
@@ -152,10 +152,10 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
             <div className="mb-3">
               <motion.span
                 animate={{
-                  backgroundColor: isHovered ? 'rgba(217, 164, 88, 0.22)' : 'rgba(217, 164, 88, 0.12)',
-                  color: isHovered ? '#f5d79f' : '#e7c98f',
+                  backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.16)' : 'rgba(255, 255, 255, 0.08)',
+                  color: isHovered ? '#f4f4f5' : '#d4d4d8',
                 }}
-                className="inline-block px-3 py-1 text-xs font-semibold rounded-full border border-primary/30 transition-all"
+                className="inline-block px-3 py-1 text-xs font-semibold rounded-full border border-white/15 transition-all"
               >
                 {weapon.category.charAt(0).toUpperCase() + weapon.category.slice(1)}
               </motion.span>
@@ -166,7 +166,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
               <div className="flex justify-between items-center text-xs">
                 <span className="text-muted-foreground">Caliber</span>
                 <motion.span
-                  animate={{ color: isHovered ? '#f5d79f' : '#e5e7eb' }}
+                  animate={{ color: isHovered ? '#f5f5f5' : '#d4d4d8' }}
                   className="text-foreground font-semibold"
                 >
                   {weapon.caliber}
@@ -175,7 +175,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
               <div className="flex justify-between items-center text-xs">
                 <span className="text-muted-foreground">Barrel</span>
                 <motion.span
-                  animate={{ color: isHovered ? '#f5d79f' : '#e5e7eb' }}
+                  animate={{ color: isHovered ? '#f5f5f5' : '#d4d4d8' }}
                   className="text-foreground font-semibold"
                 >
                   {weapon.barrelLength}
@@ -184,7 +184,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
               <div className="flex justify-between items-center text-xs">
                 <span className="text-muted-foreground">Weight</span>
                 <motion.span
-                  animate={{ color: isHovered ? '#f5d79f' : '#e5e7eb' }}
+                  animate={{ color: isHovered ? '#f5f5f5' : '#d4d4d8' }}
                   className="text-foreground font-semibold"
                 >
                   {weapon.weight}
@@ -203,12 +203,12 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
               className="pt-4 border-t border-border/60"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-accent animate-pulse">Click to Explore</span>
+                <span className="text-xs font-semibold text-zinc-200 animate-pulse">Click to Explore</span>
             <motion.div
               animate={{ x: isHovered ? 4 : 0 }}
               transition={{ type: 'spring', stiffness: 240, damping: 24 }}
             >
-              <ChevronRight className="w-4 h-4 text-accent" />
+              <ChevronRight className="w-4 h-4 text-zinc-200" />
             </motion.div>
               </div>
             </motion.div>
@@ -225,10 +225,10 @@ function QuickInfoItem({ label, value }: { label: string; value: string }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="flex justify-between items-center text-xs p-2 rounded bg-primary/5 border border-primary/10"
+      className="flex justify-between items-center text-xs p-2 rounded bg-white/5 border border-white/10"
     >
       <span className="text-muted-foreground">{label}</span>
-      <span className="text-primary font-semibold">{value}</span>
+      <span className="text-zinc-100 font-semibold">{value}</span>
     </motion.div>
   );
 }

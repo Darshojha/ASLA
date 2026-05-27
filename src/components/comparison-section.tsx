@@ -48,7 +48,7 @@ export default function ComparisonSection({ firearms }: ComparisonSectionProps) 
           className="text-center mb-12"
         >
           <h2 className="font-display font-bold text-4xl sm:text-5xl mb-4 text-foreground">
-            Compare <span className="text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">Weapons</span>
+            Compare <span className="text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text">Weapons</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A lighter comparison view that keeps the page responsive while preserving the most useful reference data.
@@ -67,7 +67,7 @@ export default function ComparisonSection({ firearms }: ComparisonSectionProps) 
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               onClick={handleSwap}
-              className="self-start xl:self-center inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold border border-primary/10"
+              className="self-start xl:self-center inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white/5 text-zinc-100 font-semibold border border-white/10"
             >
               <ArrowLeftRight className="w-4 h-4" />
               Swap
@@ -104,8 +104,8 @@ export default function ComparisonSection({ firearms }: ComparisonSectionProps) 
           </div>
         </div>
 
-        <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground justify-center">
-          <Scale className="w-4 h-4 text-accent" />
+        <div className="mt-6 flex items-center gap-2 text-sm text-zinc-400 justify-center">
+          <Scale className="w-4 h-4 text-zinc-200" />
           Fast, table-first comparison for quick browsing.
         </div>
       </div>
@@ -124,11 +124,11 @@ function CompactSelect({
 }) {
   return (
     <label className="flex-1 min-w-0">
-      <span className="block text-xs uppercase tracking-[0.22em] text-muted-foreground mb-2">Select firearm</span>
+      <span className="block text-xs uppercase tracking-[0.22em] text-zinc-500 mb-2">Select firearm</span>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl bg-background/80 border border-border/60 px-4 py-3 text-foreground font-semibold outline-none focus:border-primary/40"
+        className="w-full rounded-xl bg-black/60 border border-white/10 px-4 py-3 text-zinc-100 font-semibold outline-none focus:border-white/30"
       >
         {firearms.map((weapon) => (
           <option key={weapon.id} value={weapon.id}>
@@ -142,10 +142,10 @@ function CompactSelect({
 
 function SummaryCard({ title, weapon }: { title: string; weapon: Firearm }) {
   return (
-    <div className="rounded-2xl border border-border/60 bg-primary/5 p-5">
-      <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground mb-2">{title}</p>
-      <h3 className="font-display font-bold text-2xl text-foreground mb-2">{weapon.name}</h3>
-      <p className="text-sm text-muted-foreground mb-4">{weapon.description}</p>
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+      <p className="text-xs uppercase tracking-[0.22em] text-zinc-500 mb-2">{title}</p>
+      <h3 className="font-display font-bold text-2xl text-zinc-100 mb-2">{weapon.name}</h3>
+      <p className="text-sm text-zinc-400 mb-4">{weapon.description}</p>
       <div className="grid grid-cols-2 gap-3 text-sm">
         <InlineStat label="Caliber" value={weapon.caliber} />
         <InlineStat label="Year" value={String(weapon.year)} />
@@ -158,9 +158,9 @@ function SummaryCard({ title, weapon }: { title: string; weapon: Firearm }) {
 
 function InlineStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border/60 bg-card/70 p-3">
-      <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground mb-1">{label}</p>
-      <p className="font-semibold text-foreground">{value}</p>
+    <div className="rounded-xl border border-white/10 bg-black/40 p-3">
+      <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500 mb-1">{label}</p>
+      <p className="font-semibold text-zinc-100">{value}</p>
     </div>
   );
 }

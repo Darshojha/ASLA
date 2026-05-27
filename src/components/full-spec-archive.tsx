@@ -8,7 +8,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { Firearm, FirearmCategory } from '@/lib/data';
 import { categoryDefinitions } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { getFirearmImage } from '@/lib/firearm-media';
+import { getFirearmImage, neutralWeaponTone } from '@/lib/firearm-media';
 
 interface FullSpecArchiveProps {
   firearms: Firearm[];
@@ -270,7 +270,7 @@ function ArchiveCard({
       }}
     >
       <div className="grid grid-cols-1 xl:grid-cols-[220px_1fr]">
-        <div className={cn('relative min-h-[220px] bg-gradient-to-br flex items-center justify-center overflow-hidden', weapon.color)}>
+        <div className={cn('relative min-h-[220px] bg-gradient-to-br flex items-center justify-center overflow-hidden', neutralWeaponTone)}>
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -280,7 +280,7 @@ function ArchiveCard({
               loading="lazy"
               fetchPriority="low"
               sizes="(max-width: 1280px) 100vw, 240px"
-              className="object-contain p-5 drop-shadow-[0_20px_34px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-[1.03]"
+              className="object-contain p-5 drop-shadow-[0_20px_34px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-[1.03] grayscale contrast-110 brightness-110"
             />
           ) : (
             <div className="text-6xl text-white/75">*</div>
@@ -290,7 +290,7 @@ function ArchiveCard({
         <div className="p-6 sm:p-7">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-5">
             <div>
-              <p className="text-xs uppercase tracking-[0.24em] text-accent mb-2">{weapon.category}</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-zinc-300 mb-2">{weapon.category}</p>
               <h4 className="font-display font-bold text-2xl text-foreground mb-2">{weapon.name}</h4>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">{weapon.description}</p>
             </div>
@@ -320,9 +320,9 @@ function ArchiveCard({
 
 function SpecTile({ label, value, full }: { label: string; value: string; full?: boolean }) {
   return (
-    <div className={cn('rounded-2xl border border-border/60 bg-primary/5 p-4', full && 'md:col-span-2')}>
+    <div className={cn('rounded-2xl border border-white/10 bg-white/5 p-4', full && 'md:col-span-2')}>
       <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground mb-2">{label}</p>
-      <p className="text-sm font-semibold text-foreground leading-relaxed">{value}</p>
+      <p className="text-sm font-semibold text-zinc-100 leading-relaxed">{value}</p>
     </div>
   );
 }

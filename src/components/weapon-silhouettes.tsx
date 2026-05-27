@@ -201,15 +201,15 @@ const MachineGunSilhouette = ({ className = '' }: { className?: string }) => (
  */
 function getGradientColors(colorClass: string): { from: string; to: string } {
   const gradientMap: Record<string, { from: string; to: string }> = {
-    'from-blue-600 to-cyan-500': { from: '#2563eb', to: '#06b6d4' },
-    'from-purple-600 to-pink-500': { from: '#9333ea', to: '#ec4899' },
-    'from-red-600 to-orange-500': { from: '#dc2626', to: '#f97316' },
-    'from-green-600 to-emerald-500': { from: '#16a34a', to: '#10b981' },
-    'from-yellow-600 to-amber-500': { from: '#ca8a04', to: '#f59e0b' },
-    'from-indigo-600 to-violet-500': { from: '#4f46e5', to: '#8b5cf6' },
+    'from-blue-600 to-cyan-500': { from: '#d4d4d8', to: '#71717a' },
+    'from-purple-600 to-pink-500': { from: '#d4d4d8', to: '#737373' },
+    'from-red-600 to-orange-500': { from: '#d4d4d8', to: '#525252' },
+    'from-green-600 to-emerald-500': { from: '#e4e4e7', to: '#71717a' },
+    'from-yellow-600 to-amber-500': { from: '#f4f4f5', to: '#737373' },
+    'from-indigo-600 to-violet-500': { from: '#d4d4d8', to: '#71717a' },
   };
   
-  return gradientMap[colorClass] || { from: '#8b5cf6', to: '#6366f1' };
+  return gradientMap[colorClass] || { from: '#f4f4f5', to: '#525252' };
 }
 
 export function WeaponSilhouette({ weapon, className = '', animated = false }: WeaponSilhouetteProps) {

@@ -6,7 +6,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useCallback, useMemo } from 'react';
 import type { Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
-import { getFirearmImage } from '@/lib/firearm-media';
+import { getFirearmImage, neutralWeaponTone } from '@/lib/firearm-media';
 
 interface WeaponModalProps {
   weapon: Firearm | null;
@@ -106,7 +106,7 @@ export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPo
                 >
                   <div className={cn(
                     'relative h-80 rounded-2xl bg-gradient-to-br overflow-hidden mb-6 flex items-center justify-center',
-                    weapon.color,
+                    neutralWeaponTone,
                     'shadow-2xl shadow-black/10 border border-border/50'
                   )}>
                     {imageUrl ? (
@@ -116,10 +116,10 @@ export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPo
                         fill
                         unoptimized
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        className="object-contain p-6 drop-shadow-[0_24px_40px_rgba(0,0,0,0.45)]"
+                        className="object-contain p-6 drop-shadow-[0_24px_40px_rgba(0,0,0,0.45)] grayscale contrast-110 brightness-110"
                       />
                     ) : (
-                      <div className="text-7xl text-white/85">*</div>
+                      <div className="text-7xl text-white/85 grayscale">*</div>
                     )}
                   </div>
 

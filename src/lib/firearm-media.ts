@@ -11,6 +11,9 @@ const imageMap = new Map(
   (firearmImages as FirearmImageEntry[]).map((entry) => [entry.id, entry])
 );
 
+export const neutralWeaponTone = 'from-zinc-950 via-zinc-800 to-zinc-900';
+export const neutralSoftTone = 'from-zinc-800 via-zinc-700 to-zinc-900';
+
 export const categoryHeroIds = {
   pistol: 'glock-17',
   rifle: 'ar-15',

@@ -34,12 +34,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${sora.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${dmSans.variable} ${sora.variable} ${jetbrainsMono.variable} antialiased bg-black text-zinc-100`}
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           {children}

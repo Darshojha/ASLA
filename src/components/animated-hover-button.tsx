@@ -25,13 +25,13 @@ export default function AnimatedHoverButton({
 
   const baseStyles = cn(
     'relative overflow-hidden rounded-lg font-display font-bold transition-all duration-300',
-    'focus:outline-none focus:ring-2 focus:ring-purple-500/50 cursor-pointer',
+    'focus:outline-none focus:ring-2 focus:ring-white/25 cursor-pointer',
     size === 'sm' && 'px-4 py-2 text-sm',
     size === 'md' && 'px-6 py-3 text-base',
     size === 'lg' && 'px-8 py-4 text-lg',
-    variant === 'primary' && 'bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:shadow-lg hover:shadow-purple-500/50',
-    variant === 'secondary' && 'bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 border border-purple-500/30',
-    variant === 'accent' && 'bg-gradient-to-r from-red-600 to-red-500 text-white hover:shadow-lg hover:shadow-red-500/50',
+    variant === 'primary' && 'bg-gradient-to-r from-zinc-100 to-zinc-300 text-zinc-950 hover:shadow-lg hover:shadow-black/30',
+    variant === 'secondary' && 'bg-white/5 text-zinc-200 hover:bg-white/10 border border-white/10',
+    variant === 'accent' && 'bg-gradient-to-r from-zinc-300 to-zinc-100 text-zinc-950 hover:shadow-lg hover:shadow-black/30',
     className
   );
 
@@ -56,10 +56,10 @@ export default function AnimatedHoverButton({
       <motion.span
         animate={{
           color: isHovered
-            ? '#ffffff'
+            ? '#f5f5f5'
             : 'currentColor',
           textShadow: isHovered
-            ? '0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(0, 0, 0, 0.3)'
+            ? '0 0 10px rgba(255, 255, 255, 0.35), 0 0 20px rgba(0, 0, 0, 0.35)'
             : '0 0 0px rgba(0, 0, 0, 0)',
         }}
         transition={{ duration: 0.3 }}
@@ -75,7 +75,7 @@ export default function AnimatedHoverButton({
           scale: isHovered ? 1 : 0.8,
         }}
         transition={{ duration: 0.3 }}
-        className="absolute inset-0 rounded-lg bg-white/20"
+        className="absolute inset-0 rounded-lg bg-white/10"
       />
     </motion.button>
   );
