@@ -19,7 +19,6 @@ interface WeaponModalProps {
 export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPosition }: WeaponModalProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'history' | 'variants'>('overview');
   const [variantIndex, setVariantIndex] = useState(0);
-  const imageUrl = getFirearmImage(weapon.id);
 
   const relatedWeapons = useMemo(() => {
     if (!weapon) return [];
@@ -42,6 +41,8 @@ export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPo
   }, [onClose]);
 
   if (!weapon) return null;
+
+  const imageUrl = getFirearmImage(weapon.id);
 
   const tabs = [
     { id: 'overview' as const, label: 'Overview' },
