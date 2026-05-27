@@ -17,31 +17,10 @@ interface EnhancedWeaponCardProps {
 export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedWeaponCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
   const imageUrl = getFirearmImage(weapon.id);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current || !isHovered) return;
-
-    const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const x = e.clientX - rect.left - centerX;
-    const y = e.clientY - rect.top - centerY;
-
-    const rotateXValue = (y / centerY) * 10;
-    const rotateYValue = (x / centerX) * -10;
-
-    setRotateX(rotateXValue);
-    setRotateY(rotateYValue);
-  }, [isHovered]);
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
   }, []);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -57,7 +36,6 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
   return (
     <div
       ref={ref}
-      onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={() => setIsHovered(true)}
       onClick={handleClick}
@@ -67,21 +45,18 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
       }}
     >
       <motion.div
-        style={{
-          rotateX: isHovered ? rotateX : 0,
-          rotateY: isHovered ? rotateY : 0,
-        }}
         animate={{
-          y: isHovered ? -12 : 0,
+          y: isHovered ? -8 : 0,
+          scale: isHovered ? 1.02 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        transition={{ type: 'spring', stiffness: 220, damping: 24 }}
         className="h-full"
       >
         <div
           className={cn(
             'relative h-full p-6 rounded-2xl overflow-hidden cursor-pointer',
             'bg-gradient-to-br from-card/80 to-card/50 backdrop-blur-xl',
-            'border border-border/60 transition-all duration-300',
+            'border border-border/60 transition-all duration-200 will-change-transform',
             isHovered
               ? 'border-primary/50 shadow-2xl shadow-primary/15'
               : 'shadow-lg shadow-black/10'
@@ -105,13 +80,13 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
             className={cn(
               'relative h-48 rounded-xl mb-4 overflow-hidden bg-gradient-to-br',
               weapon.color,
-              'transition-all duration-300 flex items-center justify-center',
+              'transition-all duration-200 flex items-center justify-center',
               isHovered && 'shadow-2xl shadow-primary/20'
             )}
             animate={{
-              scale: isHovered ? 1.05 : 1,
+              scale: isHovered ? 1.03 : 1,
             }}
-            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            transition={{ type: 'spring', stiffness: 240, damping: 24 }}
           >
             {imageUrl ? (
               <Image
@@ -141,7 +116,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                 initial={{ x: '-100%' }}
                 animate={{ x: '100%' }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.9, ease: 'easeOut' }}
               />
             )}
           </motion.div>
@@ -229,12 +204,12 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
             >
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold text-accent animate-pulse">Click to Explore</span>
-                <motion.div
-                  animate={{ x: isHovered ? 4 : 0 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                >
-                  <ChevronRight className="w-4 h-4 text-accent" />
-                </motion.div>
+            <motion.div
+              animate={{ x: isHovered ? 4 : 0 }}
+              transition={{ type: 'spring', stiffness: 240, damping: 24 }}
+            >
+              <ChevronRight className="w-4 h-4 text-accent" />
+            </motion.div>
               </div>
             </motion.div>
           </div>

@@ -5,6 +5,7 @@ import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import CategoriesSection from '@/components/categories-section';
 import FeaturedWeaponsUpgraded from '@/components/featured-weapons-upgraded';
+import FullSpecArchive from '@/components/full-spec-archive';
 import SearchFilter from '@/components/search-filter';
 import ComparisonSection from '@/components/comparison-section';
 import StatsSection from '@/components/stats-section';
@@ -71,6 +72,7 @@ export default function HomeClient({ firearms, loadError }: HomeClientProps) {
             <CategoriesSection categories={categories} />
             <StatsSection stats={stats} />
             <FeaturedWeaponsUpgraded firearms={firearms} onWeaponSelect={handleWeaponSelect} />
+            <FullSpecArchive firearms={firearms} />
             <SearchFilter firearms={firearms} categories={categories} />
             <ComparisonSection firearms={firearms} />
           </>

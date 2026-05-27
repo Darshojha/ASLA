@@ -14,6 +14,7 @@ export default function Navbar() {
   const navItems = [
     { label: 'Explore', href: '#categories' },
     { label: 'Featured', href: '#featured' },
+    { label: 'Archive', href: '#archive' },
     { label: 'Compare', href: '#comparison' },
     { label: 'About', href: '#about' },
   ];

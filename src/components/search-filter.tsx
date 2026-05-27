@@ -230,50 +230,65 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {results.slice(0, 12).map((firearm) => (
-              (() => {
-                const imageUrl = getFirearmImage(firearm.id);
-                return (
-              <motion.article
-                key={firearm.id}
-                whileHover={{ y: -4 }}
-                className="rounded-2xl border border-border/60 bg-card/70 p-5 backdrop-blur-xl"
-              >
-                <div className={cn('relative h-28 rounded-xl mb-4 overflow-hidden bg-gradient-to-br', firearm.color)}>
-                  {imageUrl ? (
-                    <Image
-                      src={imageUrl}
-                      alt={firearm.name}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-contain p-3"
-                    />
-                  ) : null}
-                </div>
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div>
-                    <h4 className="font-display font-semibold text-lg text-foreground">{firearm.name}</h4>
-                    <p className="text-sm text-muted-foreground">{firearm.manufacturer}</p>
+            {results.slice(0, 12).map((firearm) => {
+              const imageUrl = getFirearmImage(firearm.id);
+
+              return (
+                <motion.article
+                  key={firearm.id}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.18, ease: 'easeOut' }}
+                  className="rounded-2xl border border-border/60 bg-card/70 p-5 backdrop-blur-xl will-change-transform"
+                >
+                  <div className={cn('relative h-32 rounded-xl mb-4 overflow-hidden bg-gradient-to-br', firearm.color)}>
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={firearm.name}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-contain p-3"
+                      />
+                    ) : null}
                   </div>
-                  <span className="text-xs uppercase tracking-[0.2em] text-accent">{firearm.year}</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{firearm.description}</p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
-                    {firearm.category}
-                  </span>
-                  <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
-                    {firearm.caliber}
-                  </span>
-                </div>
-              </motion.article>
-                );
-              })()
-            ))}
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div>
+                      <h4 className="font-display font-semibold text-lg text-foreground">{firearm.name}</h4>
+                      <p className="text-sm text-muted-foreground">{firearm.manufacturer}</p>
+                    </div>
+                    <span className="text-xs uppercase tracking-[0.2em] text-accent">{firearm.year}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{firearm.description}</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs mb-4">
+                    <SpecMini label="Caliber" value={firearm.caliber} />
+                    <SpecMini label="Type" value={firearm.specs.type} />
+                    <SpecMini label="Action" value={firearm.specs.action} />
+                    <SpecMini label="Capacity" value={`${firearm.magazineCapacity} rounds`} />
+                  </div>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
+                      {firearm.category}
+                    </span>
+                    <span className="px-2 py-1 rounded-full bg-primary/5 text-primary border border-primary/10">
+                      {firearm.origin}
+                    </span>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function SpecMini({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-border/60 bg-primary/5 px-3 py-2">
+      <p className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{label}</p>
+      <p className="font-semibold text-foreground mt-1 line-clamp-1">{value}</p>
+    </div>
   );
 }
