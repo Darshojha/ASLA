@@ -1,11 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import type { Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useState, useCallback, useRef } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { WeaponSilhouette } from './weapon-silhouettes';
+import { getFirearmImage } from '@/lib/firearm-media';
 
 interface EnhancedWeaponCardProps {
   weapon: Firearm;
@@ -17,6 +19,7 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
   const [isHovered, setIsHovered] = useState(false);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const imageUrl = getFirearmImage(weapon.id);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current || !isHovered) return;
@@ -110,17 +113,27 @@ export default function EnhancedWeaponCard({ weapon, onWeaponSelect }: EnhancedW
             }}
             transition={{ type: 'spring', stiffness: 400, damping: 30 }}
           >
-            {/* Silhouette container */}
-            <motion.div
-              animate={{ 
-                scale: isHovered ? 1.2 : 1,
-                rotate: isHovered ? 5 : 0,
-              }}
-              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-              className="w-3/4 h-3/4 text-white/80"
-            >
-              <WeaponSilhouette weapon={weapon} animated={true} />
-            </motion.div>
+            {imageUrl ? (
+              <Image
+                src={imageUrl}
+                alt={weapon.name}
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 25vw"
+                className="object-contain p-4 drop-shadow-[0_20px_35px_rgba(0,0,0,0.4)]"
+              />
+            ) : (
+              <motion.div
+                animate={{ 
+                  scale: isHovered ? 1.2 : 1,
+                  rotate: isHovered ? 5 : 0,
+                }}
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                className="w-3/4 h-3/4 text-white/80 relative z-10"
+              >
+                <WeaponSilhouette weapon={weapon} animated={true} />
+              </motion.div>
+            )}
 
             {/* Shine effect on hover */}
             {isHovered && (

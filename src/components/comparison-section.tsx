@@ -1,12 +1,15 @@
 'use client';
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowLeftRight, Zap } from 'lucide-react';
 import type { Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { getFirearmImage } from '@/lib/firearm-media';
 
 function ComparisonCard({ weapon, side }: { weapon: Firearm; side: 'left' | 'right' }) {
+  const imageUrl = getFirearmImage(weapon.id);
   return (
     <motion.div
       initial={{ opacity: 0, x: side === 'left' ? -20 : 20 }}
@@ -15,11 +18,22 @@ function ComparisonCard({ weapon, side }: { weapon: Firearm; side: 'left' | 'rig
       className="space-y-6"
     >
       <div className={cn(
-        'h-64 rounded-2xl bg-gradient-to-br flex items-center justify-center overflow-hidden',
+        'relative h-64 rounded-2xl bg-gradient-to-br flex items-center justify-center overflow-hidden',
         weapon.color,
         'border border-border/60 shadow-lg shadow-black/10'
       )}>
-        <div className="text-5xl text-white/80">*</div>
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={weapon.name}
+            fill
+            unoptimized
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-contain p-4 drop-shadow-[0_18px_28px_rgba(0,0,0,0.35)]"
+          />
+        ) : (
+          <div className="text-5xl text-white/80">*</div>
+        )}
       </div>
 
       <div>

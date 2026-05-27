@@ -1,10 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { Search, X, Filter } from 'lucide-react';
 import type { CategorySummary, Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { getFirearmImage } from '@/lib/firearm-media';
 
 interface SearchFilterProps {
   firearms: Firearm[];
@@ -229,12 +231,26 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {results.slice(0, 12).map((firearm) => (
+              (() => {
+                const imageUrl = getFirearmImage(firearm.id);
+                return (
               <motion.article
                 key={firearm.id}
                 whileHover={{ y: -4 }}
                 className="rounded-2xl border border-border/60 bg-card/70 p-5 backdrop-blur-xl"
               >
-                <div className={cn('h-28 rounded-xl mb-4 bg-gradient-to-br', firearm.color)} />
+                <div className={cn('relative h-28 rounded-xl mb-4 overflow-hidden bg-gradient-to-br', firearm.color)}>
+                  {imageUrl ? (
+                    <Image
+                      src={imageUrl}
+                      alt={firearm.name}
+                      fill
+                      unoptimized
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-contain p-3"
+                    />
+                  ) : null}
+                </div>
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div>
                     <h4 className="font-display font-semibold text-lg text-foreground">{firearm.name}</h4>
@@ -252,6 +268,8 @@ export default function SearchFilter({ firearms, categories }: SearchFilterProps
                   </span>
                 </div>
               </motion.article>
+                );
+              })()
             ))}
           </div>
         </div>

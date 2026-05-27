@@ -1,9 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import * as Icons from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { CategorySummary } from '@/lib/data';
+import { getCategoryHeroImage, getCategoryHeroTitle } from '@/lib/firearm-media';
 
 interface CategoriesSectionProps {
   categories: CategorySummary[];
@@ -69,6 +71,8 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
         >
           {categories.map((category) => {
             const Icon = getIcon(category.icon);
+            const heroImage = getCategoryHeroImage(category.id);
+            const heroTitle = getCategoryHeroTitle(category.id) ?? category.name;
             return (
               <motion.div
                 key={category.id}
@@ -90,17 +94,29 @@ export default function CategoriesSection({ categories }: CategoriesSectionProps
                   <div className="absolute inset-0 rounded-2xl p-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="relative z-10">
-                    <motion.div
-                      whileHover={{ rotate: 8, scale: 1.06 }}
-                      className={cn(
-                        'w-14 h-14 rounded-xl mb-4 flex items-center justify-center',
-                        'bg-gradient-to-br',
-                        category.color,
-                        'text-white shadow-lg'
-                      )}
-                    >
-                      <Icon className="w-7 h-7" />
-                    </motion.div>
+                    <div className="relative h-40 rounded-xl mb-4 overflow-hidden border border-border/50 bg-background/40">
+                      {heroImage ? (
+                        <Image
+                          src={heroImage}
+                          alt={heroTitle}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                      ) : null}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/15 to-transparent" />
+                      <div className="absolute left-4 bottom-4">
+                        <div className={cn(
+                          'w-11 h-11 rounded-lg flex items-center justify-center',
+                          'bg-gradient-to-br shadow-lg',
+                          category.color,
+                          'text-white'
+                        )}>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
 
                     <h3 className="font-display font-bold text-xl mb-2 text-foreground group-hover:text-primary transition-colors">
                       {category.name}

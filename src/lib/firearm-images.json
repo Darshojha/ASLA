@@ -1,0 +1,369 @@
+[
+    {
+        "id":  "glock-17",
+        "name":  "Glock 17",
+        "title":  "Glock",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Glock_17_%286825676904%29_%D0%B1%D0%B5%D0%B7_%D1%84%D0%BE%D0%BD%D0%B0.jpg/330px-Glock_17_%286825676904%29_%D0%B1%D0%B5%D0%B7_%D1%84%D0%BE%D0%BD%D0%B0.jpg"
+    },
+    {
+        "id":  "glock-19",
+        "name":  "Glock 19",
+        "title":  "Glock",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Glock_17_%286825676904%29_%D0%B1%D0%B5%D0%B7_%D1%84%D0%BE%D0%BD%D0%B0.jpg/330px-Glock_17_%286825676904%29_%D0%B1%D0%B5%D0%B7_%D1%84%D0%BE%D0%BD%D0%B0.jpg"
+    },
+    {
+        "id":  "sig-sauer-p226",
+        "name":  "SIG Sauer P226",
+        "title":  "SIG Sauer P226",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/SIG_Sauer_P226_neu.jpg/330px-SIG_Sauer_P226_neu.jpg"
+    },
+    {
+        "id":  "beretta-92fs",
+        "name":  "Beretta 92FS",
+        "title":  "Beretta 92",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Interpolitex_2013_%28536-8%29.jpg/330px-Interpolitex_2013_%28536-8%29.jpg"
+    },
+    {
+        "id":  "colt-m1911a1",
+        "name":  "Colt M1911A1",
+        "title":  "M1911 pistol",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/M1911_and_M1911A1_pistols.JPG/330px-M1911_and_M1911A1_pistols.JPG"
+    },
+    {
+        "id":  "cz-75",
+        "name":  "CZ 75",
+        "title":  "CZ 75",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/1977_CZ-75.png/330px-1977_CZ-75.png"
+    },
+    {
+        "id":  "hk-usp",
+        "name":  "HK USP",
+        "title":  "Heckler \u0026 Koch USP",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/First-year_H%26K_USP_9mm_%2832415150000%29_modified.png/330px-First-year_H%26K_USP_9mm_%2832415150000%29_modified.png"
+    },
+    {
+        "id":  "walther-p99",
+        "name":  "Walther P99",
+        "title":  "Walther P99",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Walther_P99_9x19mm.png/330px-Walther_P99_9x19mm.png"
+    },
+    {
+        "id":  "smith-wesson-mp9",
+        "name":  "Smith \u0026 Wesson M\u0026P9",
+        "title":  "Smith \u0026 Wesson M\u0026P",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/S%26W_M%26P_.40_left_side_b.jpg/330px-S%26W_M%26P_.40_left_side_b.jpg"
+    },
+    {
+        "id":  "ruger-sr9",
+        "name":  "Ruger SR9",
+        "title":  "Ruger SR-Series",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Ruger_SR9_%28cropped%29.jpg/330px-Ruger_SR9_%28cropped%29.jpg"
+    },
+    {
+        "id":  "ar-15",
+        "name":  "AR-15",
+        "title":  "AR-15–style rifle",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Stag2wi_.jpg/330px-Stag2wi_.jpg"
+    },
+    {
+        "id":  "m16a4",
+        "name":  "M16A4",
+        "title":  "M16 rifle",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/M16A2_noBG.jpg/330px-M16A2_noBG.jpg"
+    },
+    {
+        "id":  "ak-47",
+        "name":  "AK-47",
+        "title":  "AK-47",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/AK-47_type_II_noBG.png/330px-AK-47_type_II_noBG.png"
+    },
+    {
+        "id":  "fn-scar-l",
+        "name":  "FN SCAR-L",
+        "title":  "FN SCAR",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/ScarSandiaPix.JPG/330px-ScarSandiaPix.JPG"
+    },
+    {
+        "id":  "fn-scar-h",
+        "name":  "FN SCAR-H",
+        "title":  "FN SCAR",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/ScarSandiaPix.JPG/330px-ScarSandiaPix.JPG"
+    },
+    {
+        "id":  "steyr-aug",
+        "name":  "Steyr AUG",
+        "title":  "Steyr AUG",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/AUG_A1_508mm_04.jpg/330px-AUG_A1_508mm_04.jpg"
+    },
+    {
+        "id":  "hk-g36",
+        "name":  "HK G36",
+        "title":  "Heckler \u0026 Koch G36",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Gewehr_G36_noBG.png/330px-Gewehr_G36_noBG.png"
+    },
+    {
+        "id":  "iwi-tavor-x95",
+        "name":  "IWI Tavor X95",
+        "title":  "IWI Tavor X95",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/MicroTavorX95MARS-white.jpg/330px-MicroTavorX95MARS-white.jpg"
+    },
+    {
+        "id":  "fn-fal",
+        "name":  "FN FAL",
+        "title":  "FN FAL",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/e/e7/FN-FAL_belgian.jpeg"
+    },
+    {
+        "id":  "galil-ace",
+        "name":  "Galil ACE",
+        "title":  "IWI Galil ACE",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/IWI_3686.jpg/330px-IWI_3686.jpg"
+    },
+    {
+        "id":  "mossberg-500",
+        "name":  "Mossberg 500",
+        "title":  "Mossberg 500",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/PEO_Mossberg_590A1.jpg/330px-PEO_Mossberg_590A1.jpg"
+    },
+    {
+        "id":  "remington-870",
+        "name":  "Remington 870",
+        "title":  "Remington 870",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/1/1c/MCS_870_Modular_Combat_Shotgun_%287414624938%29.jpg"
+    },
+    {
+        "id":  "benelli-m4",
+        "name":  "Benelli M4",
+        "title":  "Benelli M4",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/4/4f/Benelli_M4_Users.png"
+    },
+    {
+        "id":  "beretta-1301-tactical",
+        "name":  "Beretta 1301 Tactical",
+        "title":  "File:Beretta 1301 Tactical.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/02/Beretta_1301_Tactical.jpg"
+    },
+    {
+        "id":  "winchester-model-12",
+        "name":  "Winchester Model 12",
+        "title":  "Winchester Model 12",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/b/b4/Winchester_Model_1903_Semiauto_Rimfire_Rifle-NMAH-AHB2015q116464.jpg"
+    },
+    {
+        "id":  "ithaca-37",
+        "name":  "Ithaca 37",
+        "title":  "Ithaca 37",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/8/83/019ithaca37.svg"
+    },
+    {
+        "id":  "browning-auto-5",
+        "name":  "Browning Auto-5",
+        "title":  "Browning Auto-5",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/1/19/Browning_Auto-5_20g_Mag.jpg"
+    },
+    {
+        "id":  "spas-12",
+        "name":  "SPAS-12",
+        "title":  "SPAS-12",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/1/1d/Franchi_SPAS-12_Shotgun.JPG"
+    },
+    {
+        "id":  "saiga-12",
+        "name":  "Saiga-12",
+        "title":  "Saiga-12",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/f/f3/Saiga-12K_2013.jpg"
+    },
+    {
+        "id":  "kel-tec-ksg",
+        "name":  "Kel-Tec KSG",
+        "title":  "KelTec KSG",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/6/62/Ingrid_and_the_Kel-Tec_KSG.jpg"
+    },
+    {
+        "id":  "remington-700",
+        "name":  "Remington 700",
+        "title":  "Remington Model 700",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Remington_Model_700.JPG/330px-Remington_Model_700.JPG"
+    },
+    {
+        "id":  "m40a5",
+        "name":  "M40A5",
+        "title":  "File:King Abdullah II Special Operations Training Center Image 2 of 5 5739387 190825-M-QR315-1108.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/06/King_Abdullah_II_Special_Operations_Training_Center_Image_2_of_5_5739387_190825-M-QR315-1108.jpg"
+    },
+    {
+        "id":  "accuracy-international-awm",
+        "name":  "Accuracy International AWM",
+        "title":  "File:AWM-338-white.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/0f/AWM-338-white.jpg"
+    },
+    {
+        "id":  "barrett-m82a1",
+        "name":  "Barrett M82A1",
+        "title":  "File:Barrett-M82A1-Independence-Day-2017-IZE-048-white.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/5/5a/Barrett-M82A1-Independence-Day-2017-IZE-048-white.jpg"
+    },
+    {
+        "id":  "mcmillan-tac-50",
+        "name":  "McMillan TAC-50",
+        "title":  "File:MCMILLAN TAC-50.webp",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/7/7a/MCMILLAN_TAC-50.webp"
+    },
+    {
+        "id":  "sako-trg-42",
+        "name":  "Sako TRG 42",
+        "title":  "File:02022 0603 Sako TRG-22.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/7/7e/02022_0603_Sako_TRG-22.jpg"
+    },
+    {
+        "id":  "cheytac-m200",
+        "name":  "CheyTac M200 Intervention",
+        "title":  "File:2006 Chevrolet Matiz M200 Chic.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/8/8f/2006_Chevrolet_Matiz_M200_Chic.jpg"
+    },
+    {
+        "id":  "barrett-mrad",
+        "name":  "Barrett MRAD",
+        "title":  "File:Barrett-MRAD-brown.png",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/2/27/Barrett-MRAD-brown.png"
+    },
+    {
+        "id":  "ruger-precision-rifle",
+        "name":  "Ruger Precision Rifle",
+        "title":  "File:BPLA POV Footage of the Mepali Camp Battle.webm",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/c/c0/BPLA_POV_Footage_of_the_Mepali_Camp_Battle.webm"
+    },
+    {
+        "id":  "m24-sws",
+        "name":  "M24 Sniper Weapon System",
+        "title":  "File:IDF-M24-SWS-2018-Zachi-Evenor.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/1/1e/IDF-M24-SWS-2018-Zachi-Evenor.jpg"
+    },
+    {
+        "id":  "m249-saw",
+        "name":  "M249 SAW",
+        "title":  "M249 Squad Automatic Weapon",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/PEO_M249_Para_ACOG.jpg/330px-PEO_M249_Para_ACOG.jpg"
+    },
+    {
+        "id":  "m240b",
+        "name":  "M240B",
+        "title":  "File:180908-A-SD031-276 - M240 Sky Soldier Team (Image 4 of 6).jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/b/b7/180908-A-SD031-276_-_M240_Sky_Soldier_Team_%28Image_4_of_6%29.jpg"
+    },
+    {
+        "id":  "m60",
+        "name":  "M60",
+        "title":  "File:A Sudanese soldier fires an M60 machine gun during the joint Exercise BRIGHT STAR \u002783.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/09/A_Sudanese_soldier_fires_an_M60_machine_gun_during_the_joint_Exercise_BRIGHT_STAR_%2783.jpg"
+    },
+    {
+        "id":  "mg42",
+        "name":  "MG42",
+        "title":  "File:MG42-1.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/e/ea/MG42-1.jpg"
+    },
+    {
+        "id":  "pkm",
+        "name":  "PKM",
+        "title":  "File:7,62 KK PKM Helsinki 2012.JPG",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/5/58/7%2C62_KK_PKM_Helsinki_2012.JPG"
+    },
+    {
+        "id":  "rpk-74",
+        "name":  "RPK-74",
+        "title":  "File:AK-74 RPK-74 DA-ST-89-06612.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/4/40/AK-74_RPK-74_DA-ST-89-06612.jpg"
+    },
+    {
+        "id":  "hk-mp5",
+        "name":  "HK MP5",
+        "title":  "File:A U.S. Air Force SSGT fires a 9-mm HK MP5 sub-machine gun at a firearms demonstration during exercise Bright Star \u002782 DF-ST-82-10100.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/6/6a/A_U.S._Air_Force_SSGT_fires_a_9-mm_HK_MP5_sub-machine_gun_at_a_firearms_demonstration_during_exercise_Bright_Star_%2782_DF-ST-82-10100.jpg"
+    },
+    {
+        "id":  "uzi",
+        "name":  "Uzi",
+        "title":  "File:IDF-Girl soldier armed with Uzi - Postcard ca. 1965 - Vers. 2.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/4/43/IDF-Girl_soldier_armed_with_Uzi_-_Postcard_ca._1965_-_Vers._2.jpg"
+    },
+    {
+        "id":  "fn-p90",
+        "name":  "FN P90",
+        "title":  "File:FN-P90.JPG",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/2/24/FN-P90.JPG"
+    },
+    {
+        "id":  "thompson-m1a1",
+        "name":  "Thompson M1A1",
+        "title":  "File:Thompson Submachine Guns (9885237394).jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/3/3f/Thompson_Submachine_Guns_%289885237394%29.jpg"
+    },
+    {
+        "id":  "ppsh-41",
+        "name":  "PPSh-41",
+        "title":  "File:PPSh-41 from soviet.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/01/PPSh-41_from_soviet.jpg"
+    },
+    {
+        "id":  "colt-python",
+        "name":  "Colt Python",
+        "title":  "Colt Python",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Colt-Python.jpg/330px-Colt-Python.jpg"
+    },
+    {
+        "id":  "smith-wesson-model-29",
+        "name":  "Smith \u0026 Wesson Model 29",
+        "title":  "File:SW Model 629.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/6/68/SW_Model_629.jpg"
+    },
+    {
+        "id":  "smith-wesson-686",
+        "name":  "Smith \u0026 Wesson 686",
+        "title":  "File:S\u0026W-686x2.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/8/88/S%26W-686x2.jpg"
+    },
+    {
+        "id":  "ruger-gp100",
+        "name":  "Ruger GP100",
+        "title":  "File:GP100-4-md.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/7/77/GP100-4-md.jpg"
+    },
+    {
+        "id":  "colt-single-action-army",
+        "name":  "Colt Single Action Army",
+        "title":  "File:\"Peacemaker\" Colt Single-Action Army Revolver, serial no. 4519 MET 59.143.4 169744 jan2015.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/7/74/%22Peacemaker%22_Colt_Single-Action_Army_Revolver%2C_serial_no._4519_MET_59.143.4_169744_jan2015.jpg"
+    },
+    {
+        "id":  "webley-mk-vi",
+        "name":  "Webley Mk VI",
+        "title":  "File:455 Webley Revolver Carts.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/3/3b/455_Webley_Revolver_Carts.jpg"
+    },
+    {
+        "id":  "nagant-m1895",
+        "name":  "Nagant M1895",
+        "title":  "File:Nagant M1895 DoubleAction noBG.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/6/6f/Nagant_M1895_DoubleAction_noBG.jpg"
+    },
+    {
+        "id":  "taurus-raging-bull",
+        "name":  "Taurus Raging Bull",
+        "title":  "File:Raging Hornet.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/5/5d/Raging_Hornet.jpg"
+    },
+    {
+        "id":  "ruger-blackhawk",
+        "name":  "Ruger Blackhawk",
+        "title":  "File:Ruger Blackhawk 357-NMAH-AHB2015q024327.jpg",
+        "imageUrl":  "https://upload.wikimedia.org/wikipedia/commons/1/1f/Ruger_Blackhawk_357-NMAH-AHB2015q024327.jpg"
+    },
+    {
+        "id":  "kimber-k6s",
+        "name":  "Kimber K6s",
+        "title":  "Kimber K6s Revolver | American Rifleman",
+        "imageUrl":  "https://www.americanrifleman.org/media/eefpwyto/kimberk.jpg"
+    }
+]
+

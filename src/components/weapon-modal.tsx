@@ -1,10 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useCallback, useMemo } from 'react';
 import type { Firearm } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { getFirearmImage } from '@/lib/firearm-media';
 
 interface WeaponModalProps {
   weapon: Firearm | null;
@@ -17,6 +19,7 @@ interface WeaponModalProps {
 export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPosition }: WeaponModalProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'specs' | 'history' | 'variants'>('overview');
   const [variantIndex, setVariantIndex] = useState(0);
+  const imageUrl = getFirearmImage(weapon.id);
 
   const relatedWeapons = useMemo(() => {
     if (!weapon) return [];
@@ -105,7 +108,18 @@ export default function WeaponModal({ weapon, firearms, isOpen, onClose, clickPo
                     weapon.color,
                     'shadow-2xl shadow-black/10 border border-border/50'
                   )}>
-                    <div className="text-7xl text-white/85">*</div>
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={weapon.name}
+                        fill
+                        unoptimized
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="object-contain p-6 drop-shadow-[0_24px_40px_rgba(0,0,0,0.45)]"
+                      />
+                    ) : (
+                      <div className="text-7xl text-white/85">*</div>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
