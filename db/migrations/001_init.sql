@@ -1,5 +1,3 @@
--- Use db/migrations/*.sql for schema changes.
-
 create table if not exists firearms (
   id text primary key,
   name text not null,

@@ -1,21 +1,102 @@
 # ASLA
 
-A one-page firearms reference site built with Next.js and local PostgreSQL.
+A one-page information site about firearms with a PostgreSQL-backed collection.
 
-## Data
+## What this repo uses
 
-- The source collection lives in `src/lib/data.ts`.
-- The app reads exclusively from PostgreSQL through `DATABASE_URL`.
-- On first use, the app creates the `firearms` table and seeds it from the local source collection if the table is empty.
-- There is no bundled runtime fallback now. If PostgreSQL is not configured, the app fails fast.
+- Next.js app in `src/`
+- PostgreSQL for local development and hosted deployment
+- SQL migrations in `db/migrations`
+- A VS Code recommendation for the PostgreSQL extension
 
-## Setup
+## Local PostgreSQL setup
 
-1. Copy `.env.example` to `.env.local`.
-2. Point `DATABASE_URL` at your local PostgreSQL instance.
-3. Make sure the database name exists.
-4. Run `npm run dev`.
+Create a local database, then set the same values in `.env.local` and in the VS Code PostgreSQL connection UI.
 
-## Schema
+Example local config:
 
-- `db/schema.sql` mirrors the table definition used by the app bootstrap logic.
+```env
+DATABASE_URL=postgresql://postgres:password@localhost:5432/asla
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=asla
+PGUSER=postgres
+PGPASSWORD=password
+PGSSLMODE=disable
+```
+
+## VS Code PostgreSQL extension
+
+This repo recommends `ms-ossdata.vscode-postgresql` in `.vscode/extensions.json`.
+
+Use the same local database values from `.env.local` to create the connection in VS Code:
+
+- Host: `localhost`
+- Port: `5432`
+- Database: `asla`
+- User: your PostgreSQL user
+- Password: your PostgreSQL password
+
+Do not store secrets in the repository.
+
+## Migrations
+
+Schema changes should go through SQL migration files in `db/migrations`.
+
+Run migrations with:
+
+```bash
+npm run db:migrate
+```
+
+Current bootstrap migration:
+
+- `db/migrations/001_init.sql`
+
+When you change the schema later, add a new file such as `002_add_column.sql` instead of editing old migrations.
+
+## Vercel environment variables
+
+For Vercel, use a database that Vercel can reach. A local-only PostgreSQL server will not be reachable from Vercel.
+
+Recommended flow:
+
+1. Link the project to Vercel:
+
+```bash
+vercel link
+```
+
+2. Add your database variables for the target environment. Use `production` for the live site and `preview` for preview deployments:
+
+```bash
+vercel env add DATABASE_URL production
+vercel env add POSTGRES_URL production
+vercel env add POSTGRES_URL_NON_POOLING production
+```
+
+3. Repeat the same commands for preview deployments if you use a separate database.
+
+4. Pull the remote values into your local machine when needed:
+
+```bash
+vercel env pull .env.local
+```
+
+5. If you update a secret later, re-run `vercel env pull` so your local `.env.local` stays in sync.
+
+The app reads these connection sources, in order:
+
+1. `DATABASE_URL`
+2. `POSTGRES_URL`
+3. `POSTGRES_URL_NON_POOLING`
+4. `PGHOST` / `PGDATABASE` / `PGUSER` / `PGPASSWORD` / `PGPORT`
+
+For the live site, prefer a hosted PostgreSQL service such as Vercel Postgres or another provider that supports external connections from Vercel.
+
+## Scripts
+
+- `npm run dev`
+- `npm run build`
+- `npm run lint`
+- `npm run db:migrate`
