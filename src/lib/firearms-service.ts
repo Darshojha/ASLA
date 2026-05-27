@@ -158,19 +158,15 @@ function mapRow(row: FirearmRow): Firearm {
 
 export async function getFirearmsCollection(): Promise<Firearm[]> {
   if (!pool) {
-    return firearmsFallback;
+    throw new Error('DATABASE_URL is not configured. Point it at your local PostgreSQL instance.');
   }
 
-  try {
-    await ensureCollectionReady();
-    const result = await queryDatabase<FirearmRow>(FIREARM_SELECT);
+  await ensureCollectionReady();
+  const result = await queryDatabase<FirearmRow>(FIREARM_SELECT);
 
-    if (result.rowCount > 0) {
-      return result.rows.map(mapRow);
-    }
-  } catch (error) {
-    console.warn('Falling back to bundled firearm collection:', error);
+  if (result.rowCount > 0) {
+    return result.rows.map(mapRow);
   }
 
-  return firearmsFallback;
+  throw new Error('The firearms table is empty. Seed your local dataset first.');
 }
